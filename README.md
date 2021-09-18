@@ -11,4 +11,4 @@ There are two ways of running the model.
 
 The model contains three free parameters: "s_PL" (between 0 and 1, default 0.5) is the power-law index of the radial accretion rate profile in the ADAF regime, "alp_ss" (should be between 0.01 and 0.1, default 0.03) is the viscosity parameter, "themin" (between 0 and 90 degrees, default 30 degrees) is the minimum polar angle (in radian) below which fallback is impeded by the mechanical feedback from the disk. 
 
-The detailed description of the model can be found in the document "collapsar.pdf". 
+The detailed description of the model can be found in the document "model_description.pdf". 
