@@ -94,8 +94,8 @@ for i in range(Nr):
 
 # need to find the time when accretion disk forms
 Mbh0, abh0, Jbh0, i_disk = 0., 0., 0., 0
-for i in range(Nr):
-    if Marr[i] < msun:
+for i in range(Nr-1):
+    if Marr[i] < msun:   # assume that the innermost 1 Msun always forms a BH
         continue
     Mbh = Marr[i]
     Rg = G*Mbh/c**2
@@ -108,8 +108,12 @@ for i in range(Nr):
         Jbh0 = Jarr[i]
         abh0 = abh
         break
-    if i == Nr:
-        print('no disk forms for this star!')
+    if i == Nr-2:
+        if machine_run:
+            print('%.3e\t%.3e\t%.3e\t%.3e\t%.3e' % (Mbh/msun, abh, 0, 0, 0))
+        else:
+            print('no disk forms for this star!')
+            print('final Mbh=%.3f Msun, abh=%.3f' % (Mbh/msun, abh))
         exit()
 # the i_disk-th shell starts forming a disk
 tdisk = tffarr[i_disk]
