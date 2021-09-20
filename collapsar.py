@@ -143,7 +143,7 @@ for i in range(Ntgrid):
 
 
 def MJfbdot(t, tgrid, lgMJdot_grid):    # M/J fallback rate any time
-    i_grid = min(Ntgrid-1, max(0, floor((t-tgrid[0])/dtgrid)))
+    i_grid = min(Ntgrid-1, max(0, int(floor((t-tgrid[0])/dtgrid))))
     # t is usually between tgrid[i_grid] and tgrid[i_grid+1]
     slope = (lgMJdot_grid[i_grid+1] - lgMJdot_grid[i_grid])/(tgrid[i_grid+1] - tgrid[i_grid])
     lgMJdot = lgMJdot_grid[i_grid] + (t - tgrid[i_grid])*slope
@@ -170,7 +170,7 @@ abh = c*Jbh/(G*Mbh**2)
 Rg = G*Mbh/c**2
 Risco = risco_over_rg(abh) * Rg
 OmgKisco = sqrt(G*Mbh/Risco**3)
-tvis_isco = 2/alp_ss/OmgKisco
+tvis_isco = 1/alp_ss/OmgKisco
 
 # initialize the disk properties (unimportant for the total energetics)
 Md0 = MJfbdot(tdisk, tgrid, lgMfbdotgrid)*tvis_isco*0.5
